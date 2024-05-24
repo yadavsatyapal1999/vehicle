@@ -6,6 +6,7 @@ const vehicleSchema = require('../Schema/addVehicle');
 // For getting Wheelers of different type
 vehicleRouter.get("/vh/:wheel", async (req, res) => {
 
+    console.log("Get Wheels");
     const wheels = req.params.wheel;
 
     try {
@@ -29,10 +30,11 @@ vehicleRouter.get("/vh/:wheel", async (req, res) => {
 
 })
 
-// for getting name and availiblity
+// for getting model and availiblity
 
-vehicleRouter.get("/vh/:type", async (req, res) => {
+vehicleRouter.get("/vh1/:type", async (req, res) => {
 
+    console.log("Get types in after wheels")
     const typ = req.params.type;
 
     try {
