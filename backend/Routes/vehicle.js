@@ -58,8 +58,13 @@ vehicleRouter.get("/vh1/:type", async (req, res) => {
 })
 
 vehicleRouter.post("/new",(req,res)=>{
-    const data =req.body;
-    vehicleSchema.save(data).then((data)=>{
+
+    const data = new vehicleSchema({
+        wheel:req.body.wheel,
+        type:req.body.type,
+        model:req.body.type
+    })
+    data.save().then((data)=>{
         res.status(200).json({
             message:"Data Saved SucessFully",
             detail:data
