@@ -11,12 +11,30 @@ import { useEffect, useState } from 'react';
 import { useContext } from 'react';
 import { Context } from '../Context/ContextProvide';
 import { useNavigate } from 'react-router-dom';
+import Error from './Error';
 
 export default function Model() {
 
-  const { model, Setmodel } = useContext(Context);
+  const { model, Setmodel,alert,Setalert,SetalertValue } = useContext(Context);
   const navigate = useNavigate();
-
+  useEffect(()=>{
+    if(model.length ==0){
+      Setalert("True");
+      SetalertValue("An Error Occurred Try After Some Time")
+    }else{
+      Setalert(false);
+      SetalertValue("")
+      
+    }
+  })
+  let handleChange =(event)=>{
+    Setmodel(event.target.value)
+  }
+  let submit =()=>{
+    Setalert(false);
+    SetalertValue()
+    navigate("/date")
+  }
 
 
   return <Container maxWidth="sm">
@@ -30,13 +48,15 @@ export default function Model() {
           aria-label="model"
           name="model"
           value={model}
+          defaultValue={model[0]}
+          onChange={handleChange}
         >
 
           {model.map((value) => {
             return <FormControlLabel value={value} control={<Radio />} label={value} />
           })}
 
-        </RadioGroup> : <Alert severity="error">An Error Occured Please Try Again!.</Alert>}
+        </RadioGroup> : <Error/>}
 
       </FormControl>
       <br />
@@ -44,7 +64,8 @@ export default function Model() {
         variant="outlined"
         color="secondary"
         sx={{ mt: 2 }}
-        disabled={false}
+        disabled={alert}
+        onClick={submit}
       >
         Submit
       </Button>

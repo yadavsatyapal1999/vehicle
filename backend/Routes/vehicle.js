@@ -7,8 +7,9 @@ const vehicleSchema = require('../Schema/addVehicle');
 vehicleRouter.get("/vh/:wheel", async (req, res) => {
 
     console.log("Get Wheels");
-    const wheels = req.params.wheel;
-
+    const wheels = Number(req.params.wheel);
+console.log(wheels);
+console.log(typeof(wheels));
     try {
         const vehicle = await vehicleSchema.distinct("type", { wheel: wheels });
         // Would return diffrent types of type 
