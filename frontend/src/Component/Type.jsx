@@ -7,16 +7,35 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Alert from '@mui/material/Alert';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useContext } from 'react';
 import {Context} from '../Context/ContextProvide';
 import { useNavigate } from 'react-router-dom';
+import Error from "./Error"
 
 export default function Type(){
 
-const{type, Settype} = useContext(Context);
+const{type, Settype,alert,Setalert,SetalertValue} = useContext(Context);
 const navigate = useNavigate();
 
+useEffect(()=>{
+  if(type.length ==0){
+    Setalert("True");
+    SetalertValue("An Error Occurred Try After Some Time")
+  }else{
+    Setalert(false);
+    SetalertValue("")
+    
+  }
+})
+let handleChange =(event)=>{
+  Settype(event.target.value)
+}
+let submit =()=>{
+  Setalert(false);
+  SetalertValue();
+  navigate("/model")
+}
 return <Container maxWidth="sm">
 <Box sx={{ mt: 4 }}>
   <Typography variant="h6" gutterBottom>
@@ -27,16 +46,16 @@ return <Container maxWidth="sm">
   {type.length != 0 ? <RadioGroup
       aria-label="type"
       name="type"
-      defaultValue={"2"}
-      /*value={selectedValue}
-      onChange={handleChange}*/
+      defaultValue={type[0]}
+      value={type}
+      onChange={handleChange}
     >
         
     {type.map((value)=>{
         return <FormControlLabel value={value} control={<Radio />} label={value} />
     })}
       
-    </RadioGroup> : <Alert severity="error">An Error Occured Please Try Again!.</Alert> }
+    </RadioGroup> : <Error/>}
     
   </FormControl>
   <br/>
@@ -44,7 +63,8 @@ return <Container maxWidth="sm">
     variant="outlined"
     color="secondary"
     sx={{ mt: 2 }}
-    disabled={false}
+    disabled={alert}
+    onClick={submit}
   >
     Submit
   </Button>
