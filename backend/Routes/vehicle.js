@@ -62,8 +62,9 @@ vehicleRouter.post("/new",(req,res)=>{
     const data = new vehicleSchema({
         wheel:req.body.wheel,
         type:req.body.type,
-        model:req.body.type
+        model:req.body.model
     })
+    console.log(data);
     data.save().then((data)=>{
         res.status(200).json({
             message:"Data Saved SucessFully",
