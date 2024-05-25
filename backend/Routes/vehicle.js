@@ -7,7 +7,7 @@ const vehicleSchema = require('../Schema/addVehicle');
 vehicleRouter.get("/vh/:wheel", async (req, res) => {
 
     console.log("Get Wheels");
-    const wheels = Number(req.params.wheel);
+    const wheels = parseInt(req.params.wheel, 10);
 console.log(wheels);
 console.log(typeof(wheels));
     try {
