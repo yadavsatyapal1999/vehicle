@@ -35,7 +35,7 @@ function Wheel() {
         console.log(result);
         Setalert(false)
         SetalertValue("")
-      //  navigate("/type")
+        navigate("/type")
       }
     }
     catch (err) {
