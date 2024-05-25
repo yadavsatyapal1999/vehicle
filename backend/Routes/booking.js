@@ -3,7 +3,7 @@ const bookingRoutes = express.Router();
 const bookingSchema = require("../Schema/bookingSchema");
 
 bookingRoutes.post("/new_book", async (req, res) => {
-console.log("new booking")
+    console.log("new booking")
     const data = req.body
     try {
 
@@ -22,7 +22,16 @@ console.log("new booking")
                 message: "Booking not allowed for following Dates as it is already booked"
             })
         } else {
-            bookingSchema.save(data).then((saved) => {
+
+            const vehicleDetails = new bookingSchema({
+                firstname: data.firstname,
+                lastname: data.lastname,
+                wheel: data.wheel,
+                model: data.model,
+                from: data.from,
+                to: data.to
+            })
+            vehicleDetails.save(data).then((saved) => {
                 res.status(200).json({
                     message: "Data saved Sucessfully",
                     detail: saved
