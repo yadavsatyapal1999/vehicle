@@ -11,11 +11,12 @@ const Context = createContext()
     const [model, Setmodel] = useState("")
     const [startDate, SetStartDate] = useState("");
     const [endDate, SetendDate] = useState("");
-
+    const[alert,Setalert] = useState(false);
+    const[alertValue,SetalertValue]= useState();
 
     return <Context.Provider value={{
         firstname, Setfirstname, lastname, Setlastname, wheel, SetWheel, type, Settype, model, Setmodel
-        , startDate, SetStartDate, endDate, SetendDate
+        , startDate, SetStartDate, endDate, SetendDate,alert,Setalert,alertValue,SetalertValue
     }}>
         {children}
     </Context.Provider>

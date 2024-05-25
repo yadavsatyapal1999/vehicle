@@ -9,9 +9,12 @@ import TextField from '@mui/material/TextField';
 import { Container } from '@mui/material';
 import {Context} from '../Context/ContextProvide';
 import { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function DateRangeSelector() {
   const{startDate, SetStartDate, endDate, SetendDate} = useContext(Context);
+  const navigate = useNavigate();
+
   const handleStartDateChange = (date) => {
     SetStartDate(date);
   };

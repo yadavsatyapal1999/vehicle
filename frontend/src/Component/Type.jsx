@@ -10,10 +10,12 @@ import Alert from '@mui/material/Alert';
 import { useState } from 'react';
 import { useContext } from 'react';
 import {Context} from '../Context/ContextProvide';
+import { useNavigate } from 'react-router-dom';
 
 export default function Type(){
 
 const{type, Settype} = useContext(Context);
+const navigate = useNavigate();
 
 return <Container maxWidth="sm">
 <Box sx={{ mt: 4 }}>
