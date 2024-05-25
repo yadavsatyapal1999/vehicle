@@ -14,7 +14,7 @@ import axios from "axios";
 import Error from './Error';
 
 function Wheel() {
-  const { wheel, SetWheel,alert,Setalert,SetalertValue } = useContext(Context);
+  const { wheel, SetWheel,alert,Setalert,SetalertValue,Settype } = useContext(Context);
 
   const navigate = useNavigate();
 
@@ -30,12 +30,14 @@ function Wheel() {
 
   const handleSubmit = async () => {
     try {
-      const result = await axios.get(`https://vehicle-cgfd.onrender.com/veh/vh/:${wheel}`)
+      const result = await axios.get(`https://vehicle-cgfd.onrender.com/veh/vh/${wheel}`)
       if (result) {
-        console.log(result);
+        console.log(result.data.data);
         Setalert(false)
         SetalertValue("")
+        Settype(result.data.data)
         navigate("/type")
+        
       }
     }
     catch (err) {

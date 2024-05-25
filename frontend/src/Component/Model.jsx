@@ -28,7 +28,7 @@ export default function Model() {
     }
   })
   let handleChange =(event)=>{
-    Setmodel(event.target.value)
+   // Setmodel(event.target.value)
   }
   let submit =()=>{
     Setalert(false);
@@ -47,13 +47,13 @@ export default function Model() {
         {model.length != 0 ? <RadioGroup
           aria-label="model"
           name="model"
-          value={model}
-          defaultValue={model[0]}
+          value={model.model}
+          defaultValue={model[0].model}
           onChange={handleChange}
         >
 
           {model.map((value) => {
-            return <FormControlLabel value={value} control={<Radio />} label={value} />
+            return <FormControlLabel value={value.model} control={<Radio />} label={value.model} />
           })}
 
         </RadioGroup> : <Error/>}
