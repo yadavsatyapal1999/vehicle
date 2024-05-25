@@ -7,9 +7,11 @@ import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+import { useContext } from 'react';
+import ContextProvider from '../Context/ContextProvide';
 
 function Wheel() {
-  /* const [selectedValue, setSelectedValue] = useState('');
+  const { wheel, SetWheel } = useContext(ContextProvider)
 
   const handleChange = (event) => {
     setSelectedValue(event.target.value);
@@ -19,30 +21,30 @@ function Wheel() {
     // Handle submission logic here
     console.log('Selected value:', selectedValue);
   };
-*/
+
   return (
     <Container maxWidth="sm">
       <Box sx={{ mt: 4 }}>
         <Typography variant="h6" gutterBottom>
-          Choose Vehicle 
+          Choose Vehicle
         </Typography>
         <FormControl component="fieldset">
           <RadioGroup
             aria-label="wheelers"
             name="wheels"
             defaultValue={"2"}
-            /*value={selectedValue}
-            onChange={handleChange}*/
+          /*value={selectedValue}
+          onChange={handleChange}*/
           >
             <FormControlLabel value="2" control={<Radio />} label="Two Wheelers" />
             <FormControlLabel value="4" control={<Radio />} label="Four Wheelers" />
           </RadioGroup>
         </FormControl>
-        <br/>
+        <br />
         <Button
           variant="outlined"
           color="secondary"
-          
+
           sx={{ mt: 2 }}
         >
           Submit

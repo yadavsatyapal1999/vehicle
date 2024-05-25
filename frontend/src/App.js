@@ -5,13 +5,22 @@ import Model from './Component/Model';
 import Name from './Component/Name';
 import Type from './Component/Type';
 import Wheel from './Component/Wheels';
+import ContextProvider from "./Context/ContextProvide"
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 function App() {
   return (
-    <div className="App">
-      <DateRangeSelector/>
-
-    </div>
+    <ContextProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route exact path="/" element={<Name />} />
+          <Route path="/wheel" element={<Wheel />} />
+          <Route path="/type" element={<Type />} />
+          <Route path="/model" element={<Model />} />
+          <Route path="/date" element={<DateRangeSelector/>} />
+        </Routes>
+      </BrowserRouter>
+    </ContextProvider>
   );
 }
 

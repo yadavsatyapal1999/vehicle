@@ -8,13 +8,12 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Alert from '@mui/material/Alert';
 import { useState } from 'react';
-
+import { useContext } from 'react';
+import ContextProvider from '../Context/ContextProvide';
 
 export default function Type(){
 
-
-    const [availType,SetavailType] = useState([])
-    const [isDisable,SetisDisable] = useState(true)
+const{type, Settype} = useContext(ContextProvider);
 
 return <Container maxWidth="sm">
 <Box sx={{ mt: 4 }}>

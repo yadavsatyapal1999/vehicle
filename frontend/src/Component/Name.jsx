@@ -3,11 +3,15 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
+import { useContext } from 'react';
+import ContextProvider from '../Context/ContextProvide';
+
 
 function Name() {
   
-
-  const handleNameChange = (event) => {
+const{firstname, Setfirstname, lastname, Setlastname} = useContext(ContextProvider)
+ 
+const handleNameChange = (event) => {
    // setName(event.target.value);
   };
 
