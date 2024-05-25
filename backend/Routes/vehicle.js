@@ -57,4 +57,20 @@ vehicleRouter.get("/vh1/:type", async (req, res) => {
 
 })
 
+vehicleRouter.post("/new",(req,res)=>{
+    const data =req.body;
+    vehicleSchema.save(data).then((data)=>{
+        res.status(200).json({
+            message:"Data Saved SucessFully",
+            detail:data
+        })
+    })
+    .catch((err)=>{
+        res.status(404).json({
+            message:"An error occurred"
+        })
+        console.log(err)
+    })
+})
+
 module.exports = vehicleRouter;
