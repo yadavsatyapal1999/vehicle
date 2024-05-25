@@ -2,7 +2,7 @@ import { createContext } from "react";
 import { useState } from "react";
 
 const Context = createContext()
-export default function ContextProvider({ children }) {
+ function ContextProvider({ children }) {
 
     const [firstname, Setfirstname] = useState("");
     const [lastname, Setlastname] = useState("");
@@ -20,3 +20,4 @@ export default function ContextProvider({ children }) {
         {children}
     </Context.Provider>
 }
+export{Context,ContextProvider};

@@ -9,11 +9,11 @@ import Button from '@mui/material/Button';
 import Alert from '@mui/material/Alert';
 import { useState } from 'react';
 import { useContext } from 'react';
-import ContextProvider from '../Context/ContextProvide';
+import {Context} from '../Context/ContextProvide';
 
 export default function Model(){
 
-  const{model, Setmodel} = useContext(ContextProvider);
+  const{model, Setmodel} = useContext(Context);
 
     
 
@@ -24,7 +24,7 @@ return <Container maxWidth="sm">
   </Typography>
   <FormControl component="fieldset">
 
-  {availModel.length != 0 ? <RadioGroup
+  {model.length != 0 ? <RadioGroup
       aria-label="model"
       name="model"
      
@@ -32,7 +32,7 @@ return <Container maxWidth="sm">
       onChange={handleChange}*/
     >
         
-    {availModel.map((value)=>{
+    {model.map((value)=>{
         return <FormControlLabel value={value} control={<Radio />} label={value} />
     })}
       
@@ -44,7 +44,7 @@ return <Container maxWidth="sm">
     variant="outlined"
     color="secondary"
     sx={{ mt: 2 }}
-    disabled={isDisable}
+    disabled={false}
   >
     Submit
   </Button>

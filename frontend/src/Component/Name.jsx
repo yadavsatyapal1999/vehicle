@@ -4,12 +4,12 @@ import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import { useContext } from 'react';
-import ContextProvider from '../Context/ContextProvide';
+import {Context} from '../Context/ContextProvide';
 
 
 function Name() {
   
-const{firstname, Setfirstname, lastname, Setlastname} = useContext(ContextProvider)
+const{firstname, Setfirstname, lastname, Setlastname} = useContext(Context)
  
 const handleNameChange = (event) => {
    // setName(event.target.value);

@@ -8,18 +8,18 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import { useContext } from 'react';
-import ContextProvider from '../Context/ContextProvide';
+import {Context} from '../Context/ContextProvide';
 
 function Wheel() {
-  const { wheel, SetWheel } = useContext(ContextProvider)
+  const { wheel, SetWheel } = useContext(Context)
 
   const handleChange = (event) => {
-    setSelectedValue(event.target.value);
+   // setSelectedValue(event.target.value);
   };
 
   const handleSubmit = () => {
     // Handle submission logic here
-    console.log('Selected value:', selectedValue);
+   // console.log('Selected value:', selectedValue);
   };
 
   return (

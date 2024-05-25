@@ -7,11 +7,11 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import { Container } from '@mui/material';
-import {ContextProvider} from "../Context/ContextProvide";
+import {Context} from '../Context/ContextProvide';
 import { useContext } from 'react';
 
 function DateRangeSelector() {
-  const{startDate, SetStartDate, endDate, SetendDate} = useContext(ContextProvider);
+  const{startDate, SetStartDate, endDate, SetendDate} = useContext(Context);
   const handleStartDateChange = (date) => {
     SetStartDate(date);
   };
