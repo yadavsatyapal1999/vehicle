@@ -26,6 +26,7 @@ vehicleRouter.get("/vh/:wheel", async (req, res) => {
         res.status(500).json({
             message: "Internal Server Error Try after some time"
         })
+        console.log(err)
     }
 
 })
@@ -53,6 +54,7 @@ vehicleRouter.get("/vh1/:type", async (req, res) => {
         res.status(500).json({
             message: "Internal Server Error Try after some time"
         })
+        console.log(err)
     }
 
 })

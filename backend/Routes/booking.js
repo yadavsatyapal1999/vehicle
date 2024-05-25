@@ -44,6 +44,7 @@ bookingRoutes.post("/new_book", async (req, res) => {
         res.status(500).json({
             message: "Internal Server Error"
         })
+        console.log(err)
     }
 })
 
@@ -60,6 +61,7 @@ bookingRoutes.get("/details/:model", (req, res) => {
             res.status(500).json({
                 message: "Internal Server Error"
             })
+            console.log(err)
         })
 
 })
