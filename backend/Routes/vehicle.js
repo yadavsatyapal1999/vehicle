@@ -5,10 +5,15 @@ const vehicleSchema = require('../Schema/addVehicle');
 
 // For getting Wheelers of different type
 vehicleRouter.get("/vh/:wheel", async (req, res) => {
-
+    console.log(req.params.wheel);
     console.log("Get Wheels");
     const wheels = parseInt(req.params.wheel, 10);
-console.log(wheels);
+    if (isNaN(wheels)) {
+        return res.status(400).json({
+            message: "Invalid wheel parameter. Please provide a valid number."
+        });
+    }
+
 console.log(typeof(wheels));
     try {
         const vehicle = await vehicleSchema.distinct("type", { wheel: wheels });
