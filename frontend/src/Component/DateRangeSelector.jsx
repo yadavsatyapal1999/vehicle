@@ -7,11 +7,14 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import { Container, TextField } from '@mui/material';
 import { Context } from '../Context/ContextProvide';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function DateRangeSelector() {
   const { startDate, SetStartDate, endDate, SetendDate, data, SetData } = useContext(Context);
   const [errors, setErrors] = useState({});
 
+  const navigate = useNavigate();
   const validate = () => {
     const newErrors = {};
 
@@ -67,12 +70,23 @@ function DateRangeSelector() {
     }));
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (validate()) {
       console.log(data);
       console.log('Selected start date:', startDate);
       console.log('Selected end date:', endDate);
-      // Proceed with form submission or further actions
+      try{
+        const result = axios.post(`https://vehicle-cgfd.onrender.com/book/new_book`,data)
+        if(result){
+          window.alert("Data Saved Sucessfully")
+          navigate("/");
+         
+        }
+      }
+      catch(err){
+        window.alert("An error Occurred")
+      }
+
     } else {
       window.alert("There are errors in the form");
     }
