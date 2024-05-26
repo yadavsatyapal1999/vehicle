@@ -15,10 +15,11 @@ function ContextProvider({ children }) {
     const [alertValue, SetalertValue] = useState();
     const [vehicle, SetVehicle] = useState();
     const[selected,SetSelected] = useState();
+    const[data,SetData] = useState()
     return <Context.Provider value={{
         firstname, Setfirstname, lastname, Setlastname, wheel, SetWheel, type, Settype, model, Setmodel
         , startDate, SetStartDate, endDate, SetendDate, alert, Setalert, alertValue, SetalertValue, vehicle,
-         SetVehicle,selected,SetSelected
+         SetVehicle,selected,SetSelected,data,SetData
     }}>
         {children}
     </Context.Provider>

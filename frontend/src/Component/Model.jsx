@@ -15,8 +15,10 @@ import Error from './Error';
 
 export default function Model() {
 
-  const { model, Setmodel,alert,Setalert,SetalertValue } = useContext(Context);
+  const { model, Setmodel,alert,Setalert,SetalertValue,data, SetData  } = useContext(Context);
   const navigate = useNavigate();
+  console.log(data)
+
   useEffect(()=>{
     if(model.length ==0){
       Setalert("True");
@@ -24,11 +26,19 @@ export default function Model() {
     }else{
       Setalert(false);
       SetalertValue("")
-      
+      SetData(prev=>({
+        ...prev,
+        model:model[0].model
+      }))
     }
-  })
+  },[])
   let handleChange =(event)=>{
    // Setmodel(event.target.value)
+   console.log(event.target.value)
+   SetData(prev=>({
+    ...prev,
+    model:event.target.value
+  }))
   }
   let submit =()=>{
     Setalert(false);

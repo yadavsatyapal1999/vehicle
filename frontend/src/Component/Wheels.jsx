@@ -14,18 +14,26 @@ import axios from "axios";
 import Error from './Error';
 
 function Wheel() {
-  const { wheel, SetWheel,alert,Setalert,SetalertValue,Settype } = useContext(Context);
+  const { wheel, SetWheel,alert,Setalert,SetalertValue,Settype ,data, SetData } = useContext(Context);
 
   const navigate = useNavigate();
-
+  console.log(data)
   useEffect(() => {
     SetWheel(2)
+    SetData(prev=>({
+      ...prev,
+      wheel:2
+    }))
     SetalertValue("")
   }, []);
   console.log(wheel)
 
   const handleChange = (event) => {
     SetWheel(event.target.value);
+    SetData(prev=>({
+      ...prev,
+      wheel:event.target.value
+    }))
   };
 
   const handleSubmit = async () => {

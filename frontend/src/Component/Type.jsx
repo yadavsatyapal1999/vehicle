@@ -16,9 +16,10 @@ import axios from "axios";
 
 export default function Type(){
 
-const{type,alert,Setalert,SetalertValue,selected,SetSelected,Setmodel} = useContext(Context);
+const{type,alert,Setalert,SetalertValue,selected,SetSelected,Setmodel,data, SetData } = useContext(Context);
 const navigate = useNavigate();
 console.log(type)
+console.log(data)
 useEffect(()=>{
   if(type.length ==0){
     Setalert("True");
@@ -31,6 +32,10 @@ useEffect(()=>{
 })
 let handleChange =(event)=>{
   SetSelected(event.target.value)
+  SetData(prev=>({
+    ...prev,
+    type:event.target.value
+  }))
 }
 let submit =async ()=>{
   try {

@@ -12,16 +12,24 @@ import Error from "./Error.jsx";
 
 function Name() {
 
-  const { firstname, Setfirstname, lastname, Setlastname,alert,Setalert,SetalertValue } = useContext(Context);
+  const { firstname, Setfirstname, lastname, Setlastname,alert,Setalert,SetalertValue,data, SetData } = useContext(Context);
   
 
   const navigate = useNavigate();
-
+  console.log(data)
   const handleFirstNameChange = (event) => {
     Setfirstname(event.target.value);
+    SetData(prev=>({
+      ...prev,
+      firstname:event.target.value
+    }))
   };
   const handleLastNameChange = (event) => {
     Setlastname(event.target.value);
+    SetData(prev=>({
+      ...prev,
+      lastname:event.target.value
+    }))
   };
 
   const handleSubmit = () => {
